@@ -1,13 +1,15 @@
+.PHONY: all clean
+
 CC = gcc
 CFLAGS = -g -m32 -Wall
 
-all: menu
+all: ../menu
 
-menu: menu.o
-	$(CC) $(CFLAGS) -o menu menu.o
+../menu: menu.o
+	$(CC) $(CFLAGS) -o $@ $^
 	
 menu.o: menu.c
-	$(CC) $(CFLAGS) -c menu.c
+	$(CC) $(CFLAGS) -c $<
 
 clean:
-	rm -f menu menu.o
+	rm -f ../menu menu.o
